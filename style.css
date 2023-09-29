@@ -1,0 +1,61 @@
+@font-face {
+      font-family: sf_distant_galaxy;
+      src: url(./fonts/sf_distant_galaxy/SF\ Distant\ Galaxy\ Alternate.ttf);
+}
+
+body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #F6BAAD;
+}
+
+#jeu {
+      max-width: 900px;
+      min-width: 400px;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #AA4D39;
+}
+
+#bouton {
+      display: flex;
+      justify-content: space-between;
+}
+
+button {
+      background-color: #000000;
+      margin: 70px;
+      color: #ffffff;
+      padding: 10px 20px;
+}
+
+#titre {
+      font-family: sf_distant_galaxy;
+      color: #dea89b ;
+}
+
+.text {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #FFF3F0;
+      margin: 20px;
+      padding: 30px;
+      font-size: large;
+}
+
+.vader {
+      width: 600px;
+      height: 300px;
+}
+
+button:hover {
+      color: #D3D3D3;
+      background-color: #696969;
+}
+
