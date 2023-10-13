@@ -95,6 +95,7 @@ let chapters = {
             console.log(chapter.titre);
             console.log(chapter.description);
             console.log(chapter.bouton);
+            
       } else {
             console.log('Erreur');
       }};
