@@ -100,6 +100,8 @@ let twist = false;
 function goToChapter(chapter) {
   localStorage.setItem("chapter", chapter);
 
+  console.log(localStorage.getItem("chapter"));
+
   const chap = chapters[chapter];
 
   const title = document.getElementById("text");
@@ -191,10 +193,10 @@ function goToChapter(chapter) {
     localStorage.clear();
     goToChapter("debut");
   });
+}
 
-  if (localStorage.getItem("chapter") === null) {
-    goToChapter("debut");
-  } else {
-    goToChapter(localStorage.getItem("chapter"));
-  }
+if (localStorage.getItem("chapter") === undefined) {
+  goToChapter("debut");
+} else {
+  goToChapter(localStorage.getItem("chapter"));
 }
