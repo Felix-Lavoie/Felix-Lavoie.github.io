@@ -4,6 +4,7 @@ let chapters = {
     description:
       "Darth Vader est en train d'essayer de rantrer dans votre vaisseau et vous menace de vous tuer toi et tes collegues. Tu a deux choix, t'enfuire ou guarder ton poste.",
     image: "./assets/images/Vader.webp",
+    video: "./assets/video/ship.mp4",
     boutons: [
       { titre: "fuire", destination: "stop" },
       { titre: "rester", destination: "mourrire" },
@@ -13,6 +14,7 @@ let chapters = {
     titre: "mort",
     description: "Darth Vader vous tue",
     image: "./assets/images/Vader.webp",
+    video: "./assets/video/obi-wan-kenobi-death.mp4",
     boutons: [{ titre: "retour au depart", destination: "debut" }],
   },
   stop: {
@@ -28,8 +30,9 @@ let chapters = {
   shotDown: {
     titre: "trahison",
     description:
-      "votre superieur vous tire dans le dos et crie <AUCUN DESERTEUR!>",
+      'votre superieur vous tire dans le dos et crie "AUCUN DESERTEUR!"',
     image: "./assets/images/shot-in-back.webp",
+    son: "./assets/son/pew-pew.mp3",
     boutons: [{ titre: "retour au depart", destination: "debut" }],
   },
   superieur: {
@@ -95,17 +98,16 @@ let chapters = {
 let twist = false;
 
 function goToChapter(chapter) {
+  localStorage.setItem('chapter', chapter);
+  
   const chap = chapters[chapter];
+
   const title = document.getElementById("text");
   const texte = document.getElementById("desc");
   const img = document.getElementById("img");
 
-  if (chapters[chapter] && chapter === "toilette2") {
-    twist = true;
-  }
-  if (chapters[chapter] && chapter === "debut") {
-    twist = false;
-  }
+
+  
 
   title.innerHTML = chap.titre;
   texte.innerHTML = chap.description;
@@ -132,18 +134,25 @@ function goToChapter(chapter) {
       // la destination, c'est la destination du bouton!
       goToChapter(chap.boutons[i].destination);
     });
-
     // enfin, on ajoute le bouton dans la page Web (dans le DOM)
     boutons.appendChild(nouveauBtn);
 
-    /*if (typeof chapter === 'object') {
-            console.log(chapter.titre);
-            console.log(chapter.description);
-            console.log(chapter.bouton);
-            
-      } else {
-            console.log('Erreur');
-      }};*/
+
+    if (chapters[chapter] && chapter === "toilette2") {
+      localStorage.setItem('twist', 'yes');
+    }
+  
+    if (chapters[chapter] && chapter === "debut") {
+      localStorage.setItem('twist', 'no');
+    }
+  
+    if (localStorage.getItem('twist') === 'yes') {
+      twist = true;
+    }
+  
+    if (localStorage.getItem('twist') === 'no') {
+      twist = false;
+    }
 
     if (chapter === "clef" && twist) {
       const boutons = document.getElementById("boutons");
@@ -155,6 +164,41 @@ function goToChapter(chapter) {
       boutons.appendChild(btnV);
     }
   }
-}
 
-goToChapter("debut");
+  const media = document.querySelector("#img");
+  const video = document.createElement("video");
+  const image = document.createElement("img");
+
+  if (chapters[chapter].video) {
+    media.innerHTML = "";
+    video.src = chapters[chapter].video;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    media.appendChild(video);
+  } else {
+    media.innerHTML = "";
+    image.src = chapters[chapter].image;
+    media.appendChild(image);
+  }
+
+  const son = new Audio(chapters[chapter].son);
+
+  if (chapters[chapter].son) {
+    son.src = chapters[chapter].son;
+    son.autoplay = true;
+  }
+
+  const btnRedo = document.getElementById('redo')
+
+  btnRedo.addEventListener('click', () => {
+    localStorage.clear();
+    goToChapter("debut");
+  });
+
+  if (localStorage.getItem('chapter') === null) {
+    goToChapter('debut')
+} else {
+    goToChapter(localStorage.getItem('chapter'));
+}
+}
