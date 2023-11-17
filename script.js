@@ -98,16 +98,13 @@ let chapters = {
 let twist = false;
 
 function goToChapter(chapter) {
-  localStorage.setItem('chapter', chapter);
-  
+  localStorage.setItem("chapter", chapter);
+
   const chap = chapters[chapter];
 
   const title = document.getElementById("text");
   const texte = document.getElementById("desc");
   const img = document.getElementById("img");
-
-
-  
 
   title.innerHTML = chap.titre;
   texte.innerHTML = chap.description;
@@ -137,20 +134,19 @@ function goToChapter(chapter) {
     // enfin, on ajoute le bouton dans la page Web (dans le DOM)
     boutons.appendChild(nouveauBtn);
 
-
     if (chapters[chapter] && chapter === "toilette2") {
-      localStorage.setItem('twist', 'yes');
+      localStorage.setItem("twist", "yes");
     }
-  
+
     if (chapters[chapter] && chapter === "debut") {
-      localStorage.setItem('twist', 'no');
+      localStorage.setItem("twist", "no");
     }
-  
-    if (localStorage.getItem('twist') === 'yes') {
+
+    if (localStorage.getItem("twist") === "yes") {
       twist = true;
     }
-  
-    if (localStorage.getItem('twist') === 'no') {
+
+    if (localStorage.getItem("twist") === "no") {
       twist = false;
     }
 
@@ -189,16 +185,16 @@ function goToChapter(chapter) {
     son.autoplay = true;
   }
 
-  const btnRedo = document.getElementById('redo')
+  const btnRedo = document.getElementById("redo");
 
-  btnRedo.addEventListener('click', () => {
+  btnRedo.addEventListener("click", () => {
     localStorage.clear();
     goToChapter("debut");
   });
 
-  if (localStorage.getItem('chapter') === null) {
-    goToChapter('debut')
-} else {
-    goToChapter(localStorage.getItem('chapter'));
-}
+  if (localStorage.getItem("chapter") === null) {
+    goToChapter("debut");
+  } else {
+    goToChapter(localStorage.getItem("chapter"));
+  }
 }
