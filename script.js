@@ -21,7 +21,7 @@ let chapters = {
     titre: "arreter vous!",
     description:
       "Alors que vous vous mettez a courrir, votre superieur vous arrete et vous demande ce que vous faite. Tu a deux choix, continuer de courrire ou t'arreter.",
-    image: "./assets/images/superieur.webp",
+    image: "./assets/images/superieur.png",
     boutons: [
       { titre: "vous continuez de courrire", destination: "shotDown" },
       { titre: "vous vous arretez", destination: "superieur" },
@@ -31,14 +31,14 @@ let chapters = {
     titre: "trahison",
     description:
       'votre superieur vous tire dans le dos et crie "AUCUN DESERTEUR!"',
-    image: "./assets/images/shot-in-back.webp",
+    image: "./assets/images/shot-in-back.png",
     son: "./assets/son/pew-pew.mp3",
     boutons: [{ titre: "retour au depart", destination: "debut" }],
   },
   superieur: {
     titre: "superieur",
     description: "votre superieur vous demande pourquoi vous courrez.",
-    image: "./assets/images/superieur-ask.webp",
+    image: "./assets/images/superieur-ask.png",
     boutons: [
       { titre: "J'ais oublier le robinet ouvert.", destination: "front" },
       { titre: "J'e veut fuire.", destination: "front" },
@@ -52,13 +52,13 @@ let chapters = {
   front: {
     titre: "retour au front",
     description: "votre superieur vous retourne au front",
-    image: "./assets/images/superieur.webp",
+    image: "./assets/images/superieur.png",
     boutons: [{ titre: "continuer", destination: "mourrire" }],
   },
   toilette: {
     titre: "toilette",
     description: "vous vous dirigez au toilettes, mais allez-i vous vraiment.",
-    image: "./assets/images/ship-int.jpg",
+    image: "./assets/images/corridor.png",
     boutons: [
       { titre: "oui", destination: "clef" },
       { titre: "non", destination: "vaisseau" },
@@ -67,7 +67,7 @@ let chapters = {
   toilette2: {
     titre: "toilette",
     description: "vous vous dirigez au toilettes, mais allez-i vous vraiment.",
-    image: "./assets/images/ship-int.jpg",
+    image: "./assets/images/corridor.png",
     boutons: [
       { titre: "oui", destination: "clef" },
       { titre: "non", destination: "vaisseau" },
@@ -77,20 +77,20 @@ let chapters = {
     titre: "vaisseau",
     description:
       "vous vous metter a courire mais vous arriver rapidement a la fin du vaisseau",
-    image: "./assets/images/ship-int.jpg",
+    image: "./assets/images/corridor.png",
     boutons: [{ titre: "continuer", destination: "mourrire" }],
   },
   clef: {
     titre: "clef?",
     description: "avez-vous la clef",
-    image: "./assets/images/keys.jpg",
+    image: "./assets/images/keys.png",
     boutons: [{ titre: "non", destination: "vaisseau" }],
   },
   ending: {
     titre: "la fin?",
     description:
       "pendant que vous fesiez vos besoin Darth Vader a fini de tuer tous les personne dans le vaisseau sauf toi, le chanceux qui est restez au toilette.",
-    image: "./assets/images/bathroom.jpg",
+    image: "./assets/images/toilette.png",
     boutons: [{ titre: "une autre partie?", destination: "debut" }],
   },
 };
@@ -186,17 +186,14 @@ function goToChapter(chapter) {
     son.src = chapters[chapter].son;
     son.autoplay = true;
   }
+}
+console.log(localStorage.getItem("chapter"))
+let cha = localStorage.getItem("chapter") || 'debut';
+  goToChapter(cha);
 
-  const btnRedo = document.getElementById("redo");
 
-  btnRedo.addEventListener("click", () => {
+const btnRedo = document.getElementById("redo");
+btnRedo.addEventListener("click", () => {
     localStorage.clear();
     goToChapter("debut");
-  });
-}
-
-if (localStorage.getItem("chapter") === undefined) {
-  goToChapter("debut");
-} else {
-  goToChapter(localStorage.getItem("chapter"));
-}
+});
