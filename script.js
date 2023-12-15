@@ -2,7 +2,7 @@ let chapters = {
   debut: {
     titre: "Survivre l'empire",
     description:
-      "Darth Vader est en train d'essayer de rentrer dans votre vaisseau et vous menace de vous tuer toi et tes collègues. Tu as deux choix, t'enfuire ou garder ton poste.",
+      "Darth Vader est en train d'essayer d'entrer dans votre vaisseau et vous menace de vous tuer toi et tes collègues. Tu as deux choix, t'enfuire ou garder ton poste.",
     image: "./assets/images/Vader.webp",
     video: "./assets/video/ship.mp4",
     boutons: [
@@ -86,7 +86,7 @@ let chapters = {
   ending: {
     titre: "la fin?",
     description:
-      "Pendant que vous fessiez vos besoins Darth Vader a fini de tuer tous les personnes dans le vaisseau sauf toi, le chanceux qui est rester au toilettes.",
+      "Pendant que vous faite vos besoins Darth Vader a fini de tuer tous les personnes dans le vaisseau sauf toi, le chanceux qui est rester au toilettes.",
     image: "./assets/images/toilette.png",
     boutons: [{ titre: "une autre partie?", destination: "debut" }],
   },
