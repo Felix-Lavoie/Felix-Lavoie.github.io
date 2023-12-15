@@ -100,4 +100,5 @@ animation-timing-function: linear;
   #jeu { width: 400px;}
   img { width: 350px;}
   video { width: 350px;}
+  #boutons { display: inline; width: 340px; text-align: center;}
 }

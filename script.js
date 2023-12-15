@@ -2,7 +2,7 @@ let chapters = {
   debut: {
     titre: "Survivre l'empire",
     description:
-      "Darth Vader est en train d'essayer de rantrer dans votre vaisseau et vous menace de vous tuer toi et tes collegues. Tu a deux choix, t'enfuire ou guarder ton poste.",
+      "Darth Vader est en train d'essayer de rentrer dans votre vaisseau et vous menace de vous tuer toi et tes collègues. Tu as deux choix, t'enfuire ou garder ton poste.",
     image: "./assets/images/Vader.webp",
     video: "./assets/video/ship.mp4",
     boutons: [
@@ -20,7 +20,7 @@ let chapters = {
   stop: {
     titre: "arreter vous!",
     description:
-      "Alors que vous vous mettez a courrir, votre superieur vous arrete et vous demande ce que vous faite. Tu a deux choix, continuer de courrire ou t'arreter.",
+      "Alors que vous vous mettez à courir, votre supérieur vous arrête et vous demande ce que vous faites. Tu as deux choix, continuer de courir ou t'arrêter.",
     image: "./assets/images/superieur.png",
     boutons: [
       { titre: "vous continuez de courrire", destination: "shotDown" },
@@ -30,34 +30,31 @@ let chapters = {
   shotDown: {
     titre: "trahison",
     description:
-      'votre superieur vous tire dans le dos et crie "AUCUN DESERTEUR!"',
+      'Votre supérieur vous tire dans le dos et crie "AUCUN DESERTEUR"!',
     image: "./assets/images/shot-in-back.png",
     son: "./assets/son/pew-pew.mp3",
     boutons: [{ titre: "retour au depart", destination: "debut" }],
   },
   superieur: {
     titre: "superieur",
-    description: "votre superieur vous demande pourquoi vous courrez.",
+    description: "Votre supérieur vous demande pourquoi vous courrez.",
     image: "./assets/images/superieur-ask.png",
     boutons: [
-      { titre: "J'ais oublier le robinet ouvert.", destination: "front" },
-      { titre: "J'e veut fuire.", destination: "front" },
+      { titre: "J'ai oublié le robinet ouvert..", destination: "front" },
+      { titre: "Je veut fuire.", destination: "front" },
       { titre: "Je veut aller au toilette", destination: "toilette" },
-      {
-        titre: "Je veut aller au toilette pouver vous me donner la clee",
-        destination: "toilette2",
-      },
+      {titre: "Je veut aller au toilette, pouver vous me donner la clee", destination: "toilette2" },
     ],
   },
   front: {
     titre: "retour au front",
-    description: "votre superieur vous retourne au front",
+    description: "Votre supérieur vous retourne au front",
     image: "./assets/images/superieur.png",
     boutons: [{ titre: "continuer", destination: "mourrire" }],
   },
   toilette: {
     titre: "toilette",
-    description: "vous vous dirigez au toilettes, mais allez-i vous vraiment.",
+    description: "Vous vous dirigez au toilettes, mais allez-y vous vraiment.",
     image: "./assets/images/corridor.png",
     boutons: [
       { titre: "oui", destination: "clef" },
@@ -66,7 +63,7 @@ let chapters = {
   },
   toilette2: {
     titre: "toilette",
-    description: "vous vous dirigez au toilettes, mais allez-i vous vraiment.",
+    description: "Vous vous dirigez aux toilettes, mais allez-y vous vraiment.",
     image: "./assets/images/corridor.png",
     boutons: [
       { titre: "oui", destination: "clef" },
@@ -76,20 +73,20 @@ let chapters = {
   vaisseau: {
     titre: "vaisseau",
     description:
-      "vous vous metter a courire mais vous arriver rapidement a la fin du vaisseau",
+      "Vous vous metter a courire, mais vous arriver rapidement a la fin du vaisseau",
     image: "./assets/images/corridor.png",
     boutons: [{ titre: "continuer", destination: "mourrire" }],
   },
   clef: {
     titre: "clef?",
-    description: "avez-vous la clef",
+    description: "Avez-vous la clef",
     image: "./assets/images/keys.png",
     boutons: [{ titre: "non", destination: "vaisseau" }],
   },
   ending: {
     titre: "la fin?",
     description:
-      "pendant que vous fesiez vos besoin Darth Vader a fini de tuer tous les personne dans le vaisseau sauf toi, le chanceux qui est restez au toilette.",
+      "Pendant que vous fessiez vos besoins Darth Vader a fini de tuer tous les personnes dans le vaisseau sauf toi, le chanceux qui est rester au toilettes.",
     image: "./assets/images/toilette.png",
     boutons: [{ titre: "une autre partie?", destination: "debut" }],
   },
