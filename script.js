@@ -180,9 +180,28 @@ function goToChapter(chapter) {
     media.appendChild(image);
   }
 
+  const mute = document.querySelector('#mute')
+  let click = 0
+  mute.addEventListener('click', () => {
+    click++
+    if (click === 1) {
+      localStorage.setItem('mute', true)
+    }
+    
+    if (click === 2) {
+      localStorage.removeItem('mute')
+      click = 0
+    }
+    const muteKey = localStorage.getItem('mute')
+    console.log(muteKey)
+    console.log(click)
+  })
+  const muteKey = localStorage.getItem('mute')
+  console.log(muteKey)
+
   const son = new Audio(chapters[chapter].son);
 
-  if (chapters[chapter].son) {
+  if (chapters[chapter].son && muteKey == null) {
     son.src = chapters[chapter].son;
     son.autoplay = true;
   }
@@ -197,3 +216,6 @@ btnRedo.addEventListener("click", () => {
     localStorage.clear();
     goToChapter("debut");
 });
+
+
+
